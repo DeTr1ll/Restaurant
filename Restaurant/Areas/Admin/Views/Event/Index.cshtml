@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Event>
+
+@{
+    ViewData["Title"] = "Події";
+}
+<section>
+    <div class="container">
+        <h1>Події</h1>
+
+        <p>
+            <a asp-area="Admin" asp-controller="Event" asp-action="Edit" asp-route-id="">Створити подію</a>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Title)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Date)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Time)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Price)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var entity in Model)
+                {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => entity.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => entity.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => entity.Time)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => entity.Price)
+        </td>
+        <td>
+            <a asp-action="Edit" asp-route-id="@entity.Id">Редагувати</a> |
+            <form style="display: inline-block;" id="form-@entity.Id" asp-area="Admin" asp-controller="Event" asp-action="Delete" method="post">
+                <input type="hidden" name="id" value="@entity.Id">
+                <a href="#" onclick="document.getElementById('form-@entity.Id').submit();">Видалити</a>
+            </form>
+        </td>
+    </tr>}
+            </tbody>
+        </table>
+        </div>
+</section>

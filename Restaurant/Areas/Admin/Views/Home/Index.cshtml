@@ -1,0 +1,17 @@
+﻿@{ string strTitle = "Панель адміністратора";
+                ViewBag.Title = strTitle; }
+<section>
+    <div class="container">
+        <div class="box">
+            <h2>@strTitle</h2>
+
+            <p><a asp-area="Admin" asp-controller="Banner" asp-action="Index" asp-route-id="">Налаштувати банери</a></p>
+            <p><a asp-area="Admin" asp-controller="Category" asp-action="Index" asp-route-id="">Налаштувати категорії страв</a></p>
+            <p><a asp-area="Admin" asp-controller="Dish" asp-action="Index" asp-route-id="">Налаштувати страви</a></p>
+            <p><a asp-area="Admin" asp-controller="Event" asp-action="Index" asp-route-id="">Налаштувати події</a></p>
+            <p><a asp-area="Admin" asp-controller="TextField" asp-action="Index" asp-route-id="">Налаштувати текстові поля</a></p>
+            <div>
+            </div>
+        </div>
+    </div>
+</section>

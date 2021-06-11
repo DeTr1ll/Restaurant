@@ -1,0 +1,33 @@
+﻿@model Dish
+
+@{ ViewData["Title"] = "Деталі"; }
+
+
+<section class="top-products">
+    <div class="container">
+        <h1 class="section-heading">@Html.DisplayFor(model => model.Title)</h1>
+        <div class="article-wrapper">
+            <div class="card magic-shadow-sm">
+
+                <div class="product-image flex items-center justify-center">
+                    <img style="max-width: 80%;" src="~/images/Dishes/@Model.ImagePath">
+                </div>
+                <hr>
+                <div class="card-content items-center">
+                    <div class="text-center">
+                        @Html.DisplayFor(model => model.Description)
+                    </div>
+
+                    <div class="price text-center">
+                        @Html.DisplayNameFor(model => model.Price)
+                        @Html.DisplayFor(model => model.Price) грн.
+                    </div>
+                </div>
+
+            </div>
+            </div>
+        <div>
+            <a asp-action="Index">Повернутись до меню</a>
+        </div>
+    </div>
+</section>

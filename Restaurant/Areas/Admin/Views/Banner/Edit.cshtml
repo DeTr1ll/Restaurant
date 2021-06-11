@@ -1,0 +1,39 @@
+﻿@model Banner
+@{
+    string strTitle = "Редагувати банер";
+    ViewBag.Title = strTitle;
+}
+
+<section>
+    <div class="container">
+
+        <div>
+            <h2>@strTitle</h2>
+            <div>
+                <form asp-area="Admin" asp-controller="Banner" asp-action="Edit" method="post" enctype="multipart/form-data">
+                    <input type="hidden" asp-for="Id" />
+                    <input type="hidden" asp-for="BannerImagePath" />
+
+                    <div asp-validation-summary="All"></div>
+                    <div class="form-group">
+                        <label asp-for="Title"></label>
+                        <input asp-for="Title" />
+                        <span asp-validation-for="Title"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="BannerImagePath"></label>
+                        <input type="file" name="imageFile" id="imageFile" />
+                        <div>
+                            <img class="img-block" src="~/images/Banners/@Model.BannerImagePath" />
+                        </div>
+                    </div>
+                    <input type="submit" value="Зберегти" class="btn btn-primary" />
+                </form>
+            </div>
+        </div>
+        <div>
+            <a asp-action="Index">Повернутись до списку банерів</a>
+        </div>
+
+        </div>
+</section>

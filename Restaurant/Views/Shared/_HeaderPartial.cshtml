@@ -1,0 +1,56 @@
+﻿@using Restaurant.Service
+
+    <nav>
+        <div class="top">
+            <div class="container flex justify-between">
+                <div class="contact flex items-center">
+                    <img src="~/icons/phone.svg" alt="">
+                    <div>
+                        <h5>Зателефонуйте: @Config.CompanyPhone</h5>
+                        <h6>E-mail : @Config.CompanyEmail</h6>
+                    </div>
+                </div>
+                <div class="branding">
+                    <img src="~/icons/logo.png" alt="">
+                </div>
+                <div class="time flex items-center">
+                    <img src="~/icons/clock.svg" alt="">
+                    <div>
+                        <h5>Ми працюємо:</h5>
+                        <h6>Пон - Суб (8.00 - 12.00)</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="navbar magic-shadow">
+
+            <div class="container flex justify-center">
+
+
+                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Головна</a>
+
+                <a class="nav-link text-dark" asp-area="" asp-controller="Menu" asp-action="Index">Меню</a>
+
+                <a class="nav-link text-dark" asp-area="" asp-controller="Order" asp-action="Edit">Забронювати столик</a>
+
+                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Contacts">Контакти</a>
+
+                @if (User.IsInRole("manager"))
+                {
+
+    <a class="nav-link text-dark" asp-area="Manager" asp-controller="Order" asp-action="Index">Замовлення</a>
+
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout">Вийти</a>}
+
+                @if (User.IsInRole("admin"))
+                {
+
+
+    <a class="nav-link text-dark" asp-area="Admin" asp-controller="Home" asp-action="Index">Адмін-панель</a>
+
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout">Вийти</a>}
+
+
+            </div>
+        </div>
+    </nav>

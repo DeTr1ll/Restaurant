@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Category>
+
+@{
+    ViewData["Title"] = "Категорії страв";
+}
+<section>
+    <div class="container">
+        <h1>Категорії страв</h1>
+
+        <p>
+            <a asp-area="Admin" asp-controller="Category" asp-action="Edit" asp-route-id="">Створити категорію</a>
+        </p>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Title)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IsVisible)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var entity in Model)
+                {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => entity.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => entity.IsVisible)
+        </td>
+        <td>
+            <a asp-area="Admin" asp-controller="Category" asp-action="Edit" asp-route-id="@entity.Id">Редагувати</a> |
+            <form style="display: inline-block;" id="form-@entity.Id" asp-area="Admin" asp-controller="Category" asp-action="Delete" method="post">
+                <input type="hidden" name="id" value="@entity.Id">
+                <a href="#" onclick="document.getElementById('form-@entity.Id').submit();">Видалити</a>
+            </form>
+        </td>
+    </tr>}
+            </tbody>
+        </table>
+</div>
+    </section>

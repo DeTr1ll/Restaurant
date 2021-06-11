@@ -1,0 +1,110 @@
+﻿@model HomeViewModel
+@{ ViewData["Title"] = "Головна сторінка"; }
+
+    <section class="top-products">
+        <div class="container">
+            <h1 class="section-heading">Страви від шефа</h1>
+            <div class="slider">
+                <button class="slider-btn prev-btn"><img src="~/icons/pre.svg" alt=""></button>
+                <button class="slider-btn next-btn"><img src="~/icons/next.svg" alt=""></button>
+                <div class="food-slider">
+                    @foreach (var item in Model.Dishes)
+                    {
+
+
+                        if (item.IsSpecial == true)
+                        {
+                    <div class="food-card magic-shadow-sm">
+                        <div class="product-image flex items-center justify-center">
+                            <img src="~/images/Dishes/@item.ImagePath" alt="">
+                        </div>
+                        <hr>
+                        <div>
+                            <h2 class="text-center">@item.Title</h2>
+                        </div>
+                        <div class="price text-center">
+                            @item.Price грн.
+                        </div>
+                        <div class="flex justify-center">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Menu" asp-action="Details" asp-route-id="@item.Id">Детальніше</a>
+                            
+                        </div>
+                    </div>
+                        }
+                     }
+
+                    </div>
+
+            </div>
+
+        </div>
+    </section>
+    <section class="big-deal">
+        <div class="container">
+            <h1 class="section-heading text-pure">Пропозиції тижня</h1>
+            <div class="timer">
+                <div>
+                    <span>02</span>
+                    <span>Дні</span>
+                </div>
+                <div>
+                    <span>24</span>
+                    <span>Години</span>
+                </div>
+                <div>
+                    <span>55</span>
+                    <span>Хвилин</span>
+                </div>
+                <div>
+                    <span>58</span>
+                    <span>Секунд</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="latest-news">
+        <div class="container">
+            <h1 class="section-heading">Останні новини</h1>
+            <div class="article-wrapper">
+                <article class="card magic-shadow-sm">
+                    <div>
+                        <img src="./images/coffee.jpg" alt="">
+                    </div>
+                    <div class="card-content">
+                        <div class="post-meta flex items-center justify-between">
+                            <span>Червень 01, 2021</span>
+                            <div>
+                                <span>Викладено <strong>Kerua</strong></span>
+                                <span class="comment-count">12 коментарів</span>
+                            </div>
+                        </div>
+
+                        <h2>Lorem Ipsum - це просто фіктивний текст друку</h2>
+                        <p>
+                            Це давно встановлений факт, що читач буде відволікатися на читабельний вміст сторінки при перегляді її макета. Сенс використання Lorem Ipsum полягає в тому, що він має більше букв.
+                        </p>
+                    </div>
+                </article>
+                <article class="card magic-shadow-sm">
+                    <div>
+                        <img src="~/images/donut.jpg" alt="">
+                    </div>
+                    <div class="card-content">
+                        <div class="post-meta flex items-center justify-between">
+                            <span>Червень 01, 2021</span>
+                            <div>
+                                <span>Викладено <strong>Kerua</strong></span>
+                                <span class="comment-count">12 коментарів</span>
+                            </div>
+                        </div>
+
+                        <h2>Lorem Ipsum - це просто фіктивний текст друку</h2>
+                        <p>
+                            Це давно встановлений факт, що читач буде відволікатися на читабельний вміст сторінки при перегляді її макета. Сенс використання Lorem Ipsum полягає в тому, що він має більше букв.
+                        </p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+

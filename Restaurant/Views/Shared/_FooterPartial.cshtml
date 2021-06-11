@@ -1,0 +1,73 @@
+﻿@using Restaurant.Service
+<footer>
+    <div class="container">
+        <div class="box">
+            <h3>Швидкі посилання</h3>
+            <ul>
+                <li>
+                    <a asp-area="" asp-controller="Home" asp-action="Index">Головна</a>
+
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Menu" asp-action="Index">Меню</a>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Order" asp-action="Edit">Забронювати столик</a>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Home" asp-action="Contacts">Контакти</a>
+                </li>
+                @if (User.IsInRole("manager"))
+                {
+    <li>
+        <a asp-area="Manager" asp-controller="Order" asp-action="Index">Замовлення</a>
+    </li>
+                    <li>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout">Вийти</a>
+                    </li>
+}
+                @if (User.IsInRole("admin"))
+                {
+    <li>
+        <a asp-area="Admin" asp-controller="Home" asp-action="Index">Адмін-панель</a>
+    </li>
+                    <li>
+                        <a asp-area="" asp-controller="Account" asp-action="Logout">Вийти</a>
+
+                    </li>}
+
+            </ul>
+        </div>
+        <div class="box">
+            <h3>Підпишіться на нас</h3>
+            <div>
+                <ul>
+                    <li>
+                        <a href="https://www.facebook.com/">
+                            <img src="~/icons/facebook.svg" alt="">
+                            <span>Facebook</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/">
+                            <img src="~/icons/twitter.svg" alt="">
+                            <span>Twitter</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/">
+                            <img src="~/icons/instagram.svg" alt="">
+                            <span>Instagram</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+</footer>
+<footer class="copyright">
+    <div>
+        &copy; 2021 - @Config.CompanyName
+    </div>
+</footer>

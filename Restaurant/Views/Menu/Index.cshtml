@@ -1,0 +1,41 @@
+﻿@model MenuViewModel
+
+@{ ViewData["Title"] = "Меню"; }
+<section class="top-products">
+    <div class="container">
+        <h1 class="section-heading">Меню</h1>
+        <hr>
+
+
+        @foreach (var cat in Model.Categories)
+        {
+    <div class="slider">
+        <h2>@Html.DisplayFor(catItem => cat.Title)</h2>
+        
+        <div class="food-slider">
+            @foreach (var item in Model.Dishes)
+            {
+                if (item.CategoryId == cat.Id)
+                {
+    <div class="food-card magic-shadow-sm">
+        <div class="product-image flex items-center justify-center">
+            <img src="~/images/Dishes/@item.ImagePath" />
+        </div>
+        <hr>
+        <div>
+            <h2 class="text-center">@Html.DisplayFor(modelItem => item.Title)</h2>
+            <div class="price text-center">
+                @Html.DisplayFor(modelItem => item.Price) грн.
+            </div>
+            <div class="flex justify-center">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Menu" asp-action="Details" asp-route-id="@item.Id">Детальніше</a>
+            </div>
+        </div>
+    </div>          }
+}
+        </div>
+    </div>
+        }
+    
+                </div>
+</section>

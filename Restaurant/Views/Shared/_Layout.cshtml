@@ -1,0 +1,38 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    @await Html.PartialAsync("_CssPartial")
+    @await Html.PartialAsync("_MetatagsPartial")
+</head>
+<body>
+    <div class="main-wrapper">
+        @await Html.PartialAsync("_MobileNavPartial")
+        <div class="site-content-wrapper">
+            <div class="nav-trigger">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                     class="feather feather-bar-chart">
+                    <line x1="12" y1="20" x2="12" y2="10" />
+                    <line x1="18" y1="20" x2="18" y2="4" />
+                    <line x1="6" y1="20" x2="6" y2="16" />
+                </svg>
+            </div>
+            <div class="site-content">
+                @await Html.PartialAsync("_HeaderPartial")
+
+                @RenderBody()
+
+                @await Html.PartialAsync("_FooterPartial")
+
+            </div>
+            
+        </div>
+       
+    </div>
+    @await Html.PartialAsync("_ScriptsPartial")
+
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>

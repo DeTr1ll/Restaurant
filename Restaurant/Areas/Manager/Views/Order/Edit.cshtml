@@ -1,0 +1,72 @@
+﻿@model Order
+
+@{ ViewData["Title"] = "Редагувати замовлення"; }
+@{ string month = Model.Date.Month.ToString();
+                string day = Model.Date.Day.ToString();
+                if (Model.Date.Month < 10)
+                {
+                    month = "0" + Model.Date.Month;
+                }
+                if (Model.Date.Day < 10)
+                {
+                    day = "0" + Model.Date.Day;
+                } }
+
+<section>
+    <div class="container">
+        <h1>Редагувати замовлення</h1>
+
+        <h4>Замовлення</h4>
+        <hr />
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Id" />
+                    <div class="form-group">
+                        <label asp-for="FirstName" class="control-label"></label>
+                        <input asp-for="FirstName" class="form-control" />
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="LastName" class="control-label"></label>
+                        <input asp-for="LastName" class="form-control" />
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Phone" class="control-label"></label>
+                        <input asp-for="Phone" class="form-control" />
+                        <span asp-validation-for="Phone" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="HMPers" class="control-label"></label>
+                        <input asp-for="HMPers" class="form-control" />
+                        <span asp-validation-for="HMPers" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Date" class="control-label"></label>
+                        <input type="date" id="Date" name="Date" class="form-control" value="@Model.Date.Year-@month-@day" />
+                        <span asp-validation-for="Date" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Time" class="control-label"></label>
+                        <input type="time" id="Time" name="Time" value=@Model.Time.TimeOfDay class="form-control" />
+                        <span asp-validation-for="Time" class="text-danger"></span>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="IsProcessed" /> @Html.DisplayNameFor(model => model.IsProcessed)
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Зберегти" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div>
+            <a asp-action="Index">Повернутись до списку замовлень</a>
+        </div>
+        </div>
+    </section>

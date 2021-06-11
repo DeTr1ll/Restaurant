@@ -1,0 +1,56 @@
+﻿@using Restaurant.Service
+<div class="nav-background">
+    <div class="mobile-logo">
+        <img src="./icons/logo.png" alt="">
+    </div>
+    <div class="mobile-nav">
+        <div class="nav-top">
+            <ul>
+                <li>
+                    <a asp-area="" asp-controller="Home" asp-action="Index">Головна</a>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Menu" asp-action="Index">Меню</a>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Order" asp-action="Edit">Забронювати столик</a>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Home" asp-action="Contacts">Контакти</a>
+                </li>
+                @if (User.IsInRole("manager"))
+                {
+                    <li>
+                        <a asp-area="Manager" asp-controller="Order" asp-action="Index">Замовлення</a>
+                    </li>
+                    <li>
+                        <a asp-area="" asp-controller="Account" asp-action="Logout">Вийти</a>
+                    </li>
+                }
+                @if (User.IsInRole("admin"))
+                {
+                    <li>
+                        <a asp-area="Admin" asp-controller="Home" asp-action="Index">Адмін-панель</a>
+                    </li>
+                    <li>
+                        <a asp-area="" asp-controller="Account" asp-action="Logout">Вийти</a>
+                    </li>
+                }
+            </ul>
+        </div>
+        <div class="contact flex items-center">
+            <img src="~/icons/phone.svg" alt="">
+            <div>
+                <h5>Зателефонуйте: @Config.CompanyPhone</h5>
+                <h6>E-mail : @Config.CompanyEmail</h6>
+            </div>
+        </div>
+        <div class="time flex items-center">
+            <img src="./icons/clock.svg" alt="">
+            <div>
+                <h5>Ми працюємо:</h5>
+                <h6>Пон - Суб (8.00 - 12.00)</h6>
+            </div>
+        </div>
+    </div>
+</div>

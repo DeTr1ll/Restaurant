@@ -1,0 +1,69 @@
+﻿@model Dish
+
+@{ string strTitle = "Редагувати страву";
+                ViewBag.Title = strTitle; }
+<section>
+    <div class="container">
+        <h2>@strTitle</h2>
+        <hr />
+        <div>
+
+            <div>
+                <form asp-area="Admin" asp-controller="Dish" asp-action="Edit" method="post" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Id" />
+                    <div class="form-group">
+                        <label asp-for="Title" class="control-label"></label>
+                        <input asp-for="Title" class="form-control" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Категория</label>
+                        @Html.DropDownListFor(m => m.CategoryId, ViewBag.Categories as IEnumerable<SelectListItem>)
+                        <span asp-validation-for="Category.Title" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Subtitle" class="control-label"></label>
+                        <input asp-for="Subtitle" class="form-control" />
+                        <span asp-validation-for="Subtitle" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Description" class="control-label"></label>
+                        <textarea asp-for="Description" class="form-control"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Price" class="control-label"></label>
+                        <input asp-for="Price" class="form-control" />
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ImagePath"></label>
+                        <input type="file" name="imageFile" id="imageFile" />
+                        <div>
+                            <img class="img-block" src="~/images/Dishes/@Model.ImagePath" />
+                        </div>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="IsVisible" /> @Html.DisplayNameFor(model => model.IsVisible)
+                        </label>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="IsSpecial" /> @Html.DisplayNameFor(model => model.IsSpecial)
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Зберегти" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div>
+            <a asp-action="Index">Повернутись до списку страв</a>
+        </div>
+        </div>
+</section>
+

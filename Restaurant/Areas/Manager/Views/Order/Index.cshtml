@@ -1,0 +1,114 @@
+﻿@model IEnumerable<Order>
+
+@{ ViewData["Title"] = "Замовлення"; }
+
+<section >
+    <div class="container">
+        <h1 class="section-heading">Замовлення</h1>
+
+        <h2>Не оброблено</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FirstName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.HMPers)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Date)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Time)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var entity in Model)
+                {
+
+
+    @if (!entity.IsProcessed)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => entity.FirstName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => entity.HMPers)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => entity.Date)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => entity.Time)
+    </td>
+    <td>
+        <a asp-action="Edit" asp-route-id="@entity.Id">Редагувати</a> |
+        <form style="display: inline-block;" id="form-@entity.Id" asp-area="Manager" asp-controller="Order" asp-action="Delete" method="post">
+            <input type="hidden" name="id" value="@entity.Id">
+            <a href="#" onclick="document.getElementById('form-@entity.Id').submit();">Видалити</a>
+        </form>
+    </td>
+</tr>
+}}
+            </tbody>
+        </table>
+        <hr />
+        <h2>Оброблено</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FirstName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.HMPers)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Date)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Time)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var entity in Model)
+                {
+
+
+    @if (entity.IsProcessed)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => entity.FirstName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => entity.HMPers)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => entity.Date)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => entity.Time)
+    </td>
+    <td>
+        <a asp-action="Edit" asp-route-id="@entity.Id">Редагувати</a> |
+        <form style="display: inline-block;" id="form-@entity.Id" asp-area="Manager" asp-controller="Order" asp-action="Delete" method="post">
+            <input type="hidden" name="id" value="@entity.Id">
+            <a href="#" onclick="document.getElementById('form-@entity.Id').submit();">Видалити</a>
+        </form>
+    </td>
+</tr>
+}}
+            </tbody>
+        </table>
+        <hr />
+    </div>
+</section>
